@@ -1,77 +1,47 @@
-Summary:	-
-Summary(pl):	-
-Name:		-
-Version:	-
-Release:	-
-Epoch:		-
-License:	- (enter GPL/LGPL/BSD/BSD-like/other license name here)
-Group:		-
-Vendor:		-
-Icon:		-
-Source0:	%{name}-%{version}.tar.gz
-Source1:	-
-Patch0:		-
-URL:		-
-BuildRequires:	-
-PreReq:		-
-Requires:	-
-Requires(pre,post):	-
-Requires(preun):	-
-Requires(postun):	-
-Provides:	-
-Obsoletes:	-
-Conflicts:	-
+Summary:	synchronizes palm DateBook with ical
+Summary(pl):	synchronizuje palmowy DateBook z ical-em
+Name:		syncal
+Version:	0.8.7
+Release:	1
+License:	GPL
+Group:		Applications/Communications
+Source0:	http://hopf.math.nwu.edu/syncal/%{name}-%{version}.tar.gz
+Patch0:		syncal-newpisock.patch
+URL:		http://hopf.math.nwu.edu/syncal/
+BuildRequires:	pilot-link-devel >= 0.10.99
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 
+Syncal lets owners of Palm OS devices (Palm, Sony CLIE etc) synchronise
+their DateBook (and DateBk3/DateBk4) appointments with Ical callendar.
+
 %description -l pl
 
-%package subpackage
-Summary:	-
-Summary(pl):	-
-Group:		-
-
-%description subpackage
-
-%description subpackage -l pl
+Syncal pozwala u¿ytkownikom urz±dzeñ z Palm OS (Palm, Sony CLIE itd)
+synchronizowaæ terminy i spotkania z DateBooka (a tak¿e DateBk3/DateBk4)
+z kalendarzem programu Ical.
 
 %prep
-%setup -q -n %{name}-%{version}.orig -a 1
+%setup -q
 %patch0 -p1
 
 %build
-aclocal
-%{__autoconf}
-autoheader
-%{__automake}
-%configure
-%{__make}
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT
-
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/%{_bindir}
+install -d $RPM_BUILD_ROOT/%{_mandir}/man1
+install -m 755 syncal $RPM_BUILD_ROOT/%{_bindir}
+install -m 644 syncal.1 $RPM_BUILD_ROOT/%{_mandir}/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%pre
-
-%preun
-
-%post
-
-%postun
-
 %files
 %defattr(644,root,root,755)
-%doc README ChangeLog
+%doc changelog GETTING_STARTED README* COPYING ical.patch user.tcl syncal.man.html
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/%{name}
-
-%files subpackage
-%defattr(644,root,root,755)
-%doc extras/*.gz
-%{_datadir}/%{name}-ext
+%attr(644,root,root) %{_mandir}/man1/*
