@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://hopf.math.nwu.edu/syncal/%{name}-%{version}.tar.gz
+# Source0-md5:	860b2924c254c746401d286db026ffd9
 Patch0:		syncal-newpisock.patch
 URL:		http://hopf.math.nwu.edu/syncal/
 BuildRequires:	pilot-link-devel >= 0.10.99
