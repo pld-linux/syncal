@@ -11,6 +11,8 @@ URL:		http://hopf.math.nwu.edu/syncal/
 BuildRequires:	pilot-link-devel >= 0.10.99
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		_noautocompressdoc *.tcl
+
 %description
 
 Syncal lets owners of Palm OS devices (Palm, Sony CLIE etc) synchronise
