@@ -2,7 +2,7 @@ Summary:	synchronizes palm DateBook with ical
 Summary(pl):	synchronizuje palmowy DateBook z ical-em
 Name:		syncal
 Version:	0.8.7
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://hopf.math.nwu.edu/syncal/%{name}-%{version}.tar.gz
