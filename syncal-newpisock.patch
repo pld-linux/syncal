@@ -1,67 +1,25 @@
 diff -uNr syncal-0.8.7/syncal.c syncal-0.8.7-newpisock/syncal.c
 --- syncal-0.8.7/syncal.c	Thu Jan 10 18:17:15 2002
-+++ syncal-0.8.7-newpisock/syncal.c	Mon Jul  1 15:13:44 2002
-@@ -400,8 +400,8 @@
- 		flag,
- 		err;
++++ syncal-0.8.7-newpisock/syncal.c	Wed Jul  3 17:56:17 2002
+@@ -414,13 +414,13 @@
+ 		fflush( stdout);
+ 	}
  
--	struct pi_sockaddr
--		addr;
-+/*	struct pi_sockaddr
-+		addr;*/
- 
- 	struct AppointmentAppInfo
- 		apt_ainfo;
-@@ -409,44 +409,15 @@
- 	signal( SIGALRM, syncal_timeout );
- 	alarm( HOTSYNC_TIMEOUT);
- 
--	if ( !quiet ) {
--		printf( "Please press the HotSync button now...  ");
--		fflush( stdout);
--	}
--
 -	if (!(pilot_sd = pi_socket(PI_AF_SLP, PI_SOCK_STREAM, PI_PF_PADP))){
-+	if ((pilot_sd = pilot_connect(pilot_device)) < 0){
++	if (!(pilot_sd = pi_socket(PI_AF_PILOT, PI_SOCK_STREAM, PI_PF_DLP))){
  		if ( !quiet )
--			fprintf(stderr, "pi_socket failed\n");
-+			fprintf(stderr, "pilot_connect failed\n");
+ 			fprintf(stderr, "pi_socket failed\n");
  		exit(1);
  	}
      
 -	addr.pi_family = PI_AF_SLP;
--	strcpy(addr.pi_device, pilot_device);
--
--	if ( pi_bind(pilot_sd, (struct sockaddr*)&addr, sizeof(addr)) <0 ) {
--		if ( !quiet )
--			fprintf(stderr, "pi_bind failed\n");
--		exit(1);
--	}
--
--	if ( pi_listen(pilot_sd, 1) < 0 ) {
--		if ( !quiet )
--			fprintf(stderr, "pi_listen failed\n");
--		exit(1);
--	}
--
--	if ( (pilot_sd = pi_accept(pilot_sd, 0, 0)) < 0 ) {
--		if ( !quiet )
--			fprintf(stderr, "pi_accept failed\n");
--		exit(1);
--	}
--	
- 	signal( SIGALRM, SIG_DFL);  /* Turn off timeout alarm */
- 	alarm( 0);
++	addr.pi_family = PI_AF_PILOT;
+ 	strcpy(addr.pi_device, pilot_device);
  
--	if ( !quiet )
--		printf("Connected to Palm device.\n");
--
- 	/* Ask the pilot who it is. */
- 	if ( dlp_ReadUserInfo( pilot_sd, &pi_user) < 0 ) {
- 		if ( !quiet )
+ 	if ( pi_bind(pilot_sd, (struct sockaddr*)&addr, sizeof(addr)) <0 ) {
 diff -uNr syncal-0.8.7/syncal.h syncal-0.8.7-newpisock/syncal.h
 --- syncal-0.8.7/syncal.h	Thu Jan 10 18:17:15 2002
-+++ syncal-0.8.7-newpisock/syncal.h	Mon Jul  1 14:39:26 2002
++++ syncal-0.8.7-newpisock/syncal.h	Wed Jul  3 17:56:38 2002
 @@ -8,7 +8,7 @@
   * See the file COPYING for details.
   */
