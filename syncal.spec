@@ -42,6 +42,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc changelog GETTING_STARTED README* COPYING ical.patch user.tcl syncal.man.html
+%doc changelog GETTING_STARTED README* ical.patch user.tcl
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
