@@ -1,12 +1,12 @@
 Summary:	synchronizes palm DateBook with ical
 Summary(pl):	synchronizuje palmowy DateBook z ical-em
 Name:		syncal
-Version:	0.8.8
+Version:	0.8.9
 Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://hopf.math.nwu.edu/syncal/%{name}-%{version}.tar.gz
-# Source0-md5:	43e92e8743aca4073e9e33e4a18a87cf
+# Source0-md5:	f62a8959cd7b46dccef797eab8e35115
 URL:		http://hopf.math.nwu.edu/syncal/
 BuildRequires:	pilot-link-devel >= 0.10.99
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
