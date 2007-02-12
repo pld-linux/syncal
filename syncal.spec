@@ -1,5 +1,5 @@
 Summary:	synchronizes palm DateBook with ical
-Summary(pl.UTF-8):   synchronizuje palmowy DateBook z ical-em
+Summary(pl.UTF-8):	synchronizuje palmowy DateBook z ical-em
 Name:		syncal
 Version:	0.8.9
 Release:	1
