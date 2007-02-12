@@ -1,5 +1,5 @@
 Summary:	synchronizes palm DateBook with ical
-Summary(pl):	synchronizuje palmowy DateBook z ical-em
+Summary(pl.UTF-8):   synchronizuje palmowy DateBook z ical-em
 Name:		syncal
 Version:	0.8.9
 Release:	1
@@ -18,9 +18,9 @@ Syncal lets owners of Palm OS devices (Palm, Sony CLIE etc)
 synchronise their DateBook (and DateBk3/DateBk4) appointments with Ical
 callendar.
 
-%description -l pl
-Syncal pozwala u¿ytkownikom urz±dzeñ z Palm OS (Palm, Sony CLIE itd.)
-synchronizowaæ terminy i spotkania z DateBooka (a tak¿e
+%description -l pl.UTF-8
+Syncal pozwala uÅ¼ytkownikom urzÄ…dzeÅ„ z Palm OS (Palm, Sony CLIE itd.)
+synchronizowaÄ‡ terminy i spotkania z DateBooka (a takÅ¼e
 DateBk3/DateBk4) z kalendarzem programu Ical.
 
 %prep
